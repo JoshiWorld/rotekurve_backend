@@ -1,4 +1,4 @@
-create table aktuelles
+create table if not exists aktuelles
 (
     id        int auto_increment
         primary key,
@@ -7,7 +7,7 @@ create table aktuelles
     `release` datetime     not null
 );
 
-create table bankdaten
+create table if not exists bankdaten
 (
     id       int auto_increment
         primary key,
@@ -16,7 +16,7 @@ create table bankdaten
     kontonr  varchar(255) null
 );
 
-create table mitglieder
+create table if not exists mitglieder
 (
     mitgliedsnr int auto_increment
         primary key,
@@ -27,7 +27,7 @@ create table mitglieder
     email       varchar(255)                             not null
 );
 
-create table mitglieder_bankdaten
+create table if not exists mitglieder_bankdaten
 (
     mitgliedsnr int not null,
     bankdatenid int not null,
@@ -39,7 +39,7 @@ create table mitglieder_bankdaten
         foreign key (mitgliedsnr) references mitglieder (mitgliedsnr)
 );
 
-create table user
+create table if not exists user
 (
     id       int auto_increment
         primary key,
@@ -48,7 +48,7 @@ create table user
     email    varchar(255) not null
 );
 
-create table aktuelles_von_user
+create table if not exists aktuelles_von_user
 (
     aktuelles_id int not null,
     user_id      int not null,
@@ -58,7 +58,7 @@ create table aktuelles_von_user
         foreign key (user_id) references user (id)
 );
 
-create table user_mitglieder
+create table if not exists user_mitglieder
 (
     user_id     int not null
         primary key,
